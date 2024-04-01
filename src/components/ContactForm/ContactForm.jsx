@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 import { FaUser, FaPhone, FaPlus } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice'
+import { addContacts } from '../../redux/contactsOps'
 
 const formSchema = Yup.object().shape({
   name: Yup.string().min(3, 'Too short!').max(50, 'Too long!').required('Required!'),
@@ -20,7 +20,7 @@ const ContactForm = () => {
   const dispatch = useDispatch()
   
   const handleSubmit = (data, actions) => {
-    dispatch(addContact(data))
+    dispatch(addContacts(data))
     actions.resetForm()
   }
 
